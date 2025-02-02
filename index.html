@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Robot Controller</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Robot Controller</h1>
+        <div class="connection-status">
+            <p>Status: <span>Connecting to robot...</span></p>
+            <p class="small">(Green joystick = Connected, Red = Disconnected)</p>
+        </div>
+        
+        <div class="servo-controls">
+            <div class="servo-section">
+                <h2>Servo 1</h2>
+                <div class="servo-slider">
+                    <label for="servo1">Angle:</label>
+                    <input type="range" id="servo1" min="0" max="180" value="90">
+                    <span id="servo1-value">90°</span>
+                </div>
+                <div class="preset-buttons">
+                    <button onclick="controller.setServo(1, 0)">0°</button>
+                    <button onclick="controller.setServo(1, 90)">90°</button>
+                    <button onclick="controller.setServo(1, 180)">180°</button>
+                </div>
+            </div>
+
+            <div class="servo-section">
+                <h2>Servo 2</h2>
+                <div class="servo-slider">
+                    <label for="servo2">Angle:</label>
+                    <input type="range" id="servo2" min="0" max="180" value="90">
+                    <span id="servo2-value">90°</span>
+                </div>
+                <div class="preset-buttons">
+                    <button onclick="controller.setServo(2, 0)">0°</button>
+                    <button onclick="controller.setServo(2, 90)">90°</button>
+                    <button onclick="controller.setServo(2, 180)">180°</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="joystick-container">
+            <h2>Movement Control</h2>
+            <div id="joystick-area">
+                <div id="joystick-base">
+                    <div id="joystick-thumb"></div>
+                </div>
+            </div>
+        </div>
+        <div class="status">
+            <p>X: <span id="x-value">0</span></p>
+            <p>Y: <span id="y-value">0</span></p>
+            <div class="motor-values">
+                <p>Left Motor: <span id="left-motor">0</span></p>
+                <p>Right Motor: <span id="right-motor">0</span></p>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> 

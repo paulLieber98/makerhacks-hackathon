@@ -1,0 +1,186 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    text-align: center;
+    background-color: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 2rem;
+}
+
+.joystick-container {
+    margin: 2rem 0;
+}
+
+#joystick-area {
+    width: 300px;
+    height: 300px;
+    position: relative;
+    background-color: #f8f8f8;
+    border-radius: 50%;
+    margin: 0 auto;
+    border: 2px solid #ddd;
+}
+
+#joystick-base {
+    width: 150px;
+    height: 150px;
+    background-color: #e0e0e0;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+}
+
+#joystick-thumb {
+    width: 60px;
+    height: 60px;
+    background-color: #4CAF50;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.2s ease-out;
+}
+
+#joystick-thumb:active {
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+}
+
+.status {
+    margin-top: 1rem;
+    font-size: 1.2rem;
+    color: #666;
+}
+
+.status p {
+    margin: 0.5rem 0;
+}
+
+.connection-status {
+    margin: 1rem 0;
+    padding: 0.5rem;
+    border-radius: 8px;
+    background-color: #f8f8f8;
+}
+
+.connection-status .small {
+    font-size: 0.8rem;
+    color: #666;
+    margin-top: 0.25rem;
+}
+
+.motor-values {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #eee;
+}
+
+.servo-controls {
+    margin: 2rem 0;
+    padding: 1rem;
+    background-color: #f8f8f8;
+    border-radius: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+}
+
+.servo-section {
+    flex: 1;
+    min-width: 250px;
+    padding: 1rem;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.servo-section h2 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+.servo-slider {
+    margin: 1rem 0;
+}
+
+.servo-slider label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #666;
+}
+
+.servo-slider input[type="range"] {
+    width: 100%;
+    margin: 0.5rem 0;
+}
+
+.servo-slider span {
+    display: inline-block;
+    min-width: 3em;
+    text-align: right;
+    color: #666;
+}
+
+.preset-buttons {
+    display: flex;
+    gap: 0.5rem;
+    margin: 1rem 0;
+    justify-content: center;
+}
+
+.preset-buttons button {
+    padding: 0.5rem 1rem;
+    border: none;
+    background-color: #e0e0e0;
+    color: #333;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.preset-buttons button:hover {
+    background-color: #d0d0d0;
+}
+
+.launch-button {
+    width: 100%;
+    padding: 1rem;
+    margin-top: 1rem;
+    border: none;
+    background-color: #ff4444;
+    color: white;
+    font-weight: bold;
+    font-size: 1.1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.launch-button:hover {
+    background-color: #ff2222;
+} 
