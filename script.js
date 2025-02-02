@@ -31,23 +31,30 @@ class JoystickController {
     }
 
     connectWebSocket() {
-        // Replace with your robot's IP address and port
-        this.ws = new WebSocket('ws://192.168.4.1:81');
+        // Get the current hostname (IP address) of the ESP32
+        const host = window.location.hostname;
+        // WebSocket port (ESP32 typically uses port 81 for WebSocket)
+        this.ws = new WebSocket(`ws://${host}:81`);
         
         this.ws.onopen = () => {
-            console.log('Connected to Robot');
+            console.log('Connected to ESP32');
             this.joystickThumb.style.backgroundColor = '#4CAF50';
         };
         
         this.ws.onclose = () => {
-            console.log('Disconnected from Robot');
+            console.log('Disconnected from ESP32');
             this.joystickThumb.style.backgroundColor = '#ff4444';
+            // Try to reconnect after 2 seconds
             setTimeout(() => this.connectWebSocket(), 2000);
         };
         
         this.ws.onerror = (error) => {
             console.error('WebSocket Error:', error);
             this.joystickThumb.style.backgroundColor = '#ff4444';
+        };
+
+        this.ws.onmessage = (event) => {
+            console.log('Received:', event.data);
         };
     }
 
@@ -76,6 +83,7 @@ class JoystickController {
                 angle: angle
             };
             this.ws.send(JSON.stringify(command));
+            console.log('Sent servo command:', command);
         }
     }
 
@@ -154,16 +162,18 @@ class JoystickController {
 
     sendMovementCommand(x, y) {
         if (this.ws && this.ws.readyState === WebSocket.OPEN) {
-            const left = y - x;  // Left motor speed
-            const right = y + x; // Right motor speed
+            // Convert joystick x,y (-1 to 1) to motor speeds (-255 to 255)
+            const left = Math.round((y - x) * 255);
+            const right = Math.round((y + x) * 255);
             
             const command = {
                 type: 'motor',
-                left: Math.max(-1, Math.min(1, left)),
-                right: Math.max(-1, Math.min(1, right))
+                left: Math.max(-255, Math.min(255, left)),
+                right: Math.max(-255, Math.min(255, right))
             };
             
             this.ws.send(JSON.stringify(command));
+            console.log('Sent motor command:', command);
         }
     }
 }
